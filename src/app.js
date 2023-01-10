@@ -22,7 +22,15 @@ function randomColors() {
     // Add the color to the background
     div.style.backgroundColor = randomColor;
     hexText.textContent = randomColor;
+
+    // Check for contrast
+    checkTextContrast(randomColor, hexText);
   });
+}
+
+function checkTextContrast(color, text) {
+  const luminance = chroma(color).luminance();
+  luminance > 0.5 ? (text.style.color = "black") : (text.style.color = "white");
 }
 
 randomColors();

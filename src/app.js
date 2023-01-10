@@ -5,7 +5,7 @@ const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelector(".generate");
 const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll(".color h2");
-let initialColors;
+let initialColors = [];
 
 console.log(sliders);
 
@@ -90,6 +90,20 @@ function hslControls(e) {
   colorDivs[index].style.boxShadow = `${color} 0px 0px 0px 1px`;
 }
 
+function updateTextUI(index) {
+  const activeDiv = colorDivs[index];
+  const color = chroma(activeDiv.style.backgroundColor);
+  const textHex = activeDiv.querySelector("h2");
+  const icons = activeDiv.querySelectorAll(".controls button");
+  textHex.textContent = color.hex();
+
+  checkTextContrast(color, textHex);
+
+  for (icon of icons) {
+    checkTextContrast(color, icon);
+  }
+}
+
 randomColors();
 
 generateBtn.addEventListener("click", () => {
@@ -98,4 +112,10 @@ generateBtn.addEventListener("click", () => {
 
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
+});
+
+colorDivs.forEach((div, index) => {
+  div.addEventListener("change", () => {
+    updateTextUI(index);
+  });
 });

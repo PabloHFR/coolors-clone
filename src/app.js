@@ -22,6 +22,9 @@ function randomColors() {
     const hexText = div.children[0];
     const randomColor = generateHex();
 
+    // Add color to the array
+    initialColors.push(chroma(randomColor).hex());
+
     // Add the color to the background
     div.style.backgroundColor = randomColor;
     div.style.boxShadow = `${randomColor} 0px 0px 0px 1px`;
@@ -79,7 +82,7 @@ function hslControls(e) {
   const brightness = sliders[1];
   const saturation = sliders[2];
 
-  const bgColor = colorDivs[index].querySelector("h2").textContent;
+  const bgColor = initialColors[index];
 
   let color = chroma(bgColor)
     .set("hsl.h", hue.value)

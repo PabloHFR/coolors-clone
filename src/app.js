@@ -24,6 +24,7 @@ function randomColors() {
 
     // Add the color to the background
     div.style.backgroundColor = randomColor;
+    div.style.boxShadow = `${randomColor} 0px 0px 0px 1px`;
     hexText.textContent = randomColor;
 
     // Check for contrast

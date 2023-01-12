@@ -1,5 +1,4 @@
 import * as chroma from "chroma-js";
-import { random } from "chroma-js";
 
 const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelector(".generate");
@@ -54,6 +53,11 @@ function randomColors() {
     colorizeSliders(color, hue, brightness, saturation);
   });
   resetInputs();
+
+  adjustBtnElements.forEach((button, index) => {
+    checkTextContrast(initialColors[index], button);
+    checkTextContrast(initialColors[index], lockBtnElements[index]);
+  });
 }
 
 function checkTextContrast(color, text) {

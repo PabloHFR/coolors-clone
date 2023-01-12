@@ -1,5 +1,4 @@
 import * as chroma from "chroma-js";
-import { random } from "chroma-js";
 
 const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelector(".generate");
@@ -7,11 +6,12 @@ const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll(".color h2");
 const popupElement = document.querySelector(".copy-container");
 const adjustBtnElements = document.querySelectorAll(".adjust");
+const lockBtnElements = document.querySelectorAll(".lock");
 const closeAdjustmentBtnElements =
   document.querySelectorAll(".close-adjustment");
 const sliderContainers = document.querySelectorAll(".sliders");
 
-let initialColors = [];
+let initialColors;
 
 // Hex Color Generator
 function generateHex() {
@@ -19,15 +19,20 @@ function generateHex() {
   return hexColor;
 }
 
-let randomHex = generateHex();
-
 function randomColors() {
+  initialColors = [];
+
   colorDivs.forEach((div, index) => {
     const hexText = div.children[0];
     const randomColor = generateHex();
 
     // Add color to the array
-    initialColors.push(chroma(randomColor).hex());
+    if (div.classList.contains("locked")) {
+      initialColors.push(hexText.textContent);
+      return;
+    } else {
+      initialColors.push(chroma(randomColor).hex());
+    }
 
     // Add the color to the background
     div.style.backgroundColor = randomColor;
@@ -48,6 +53,11 @@ function randomColors() {
     colorizeSliders(color, hue, brightness, saturation);
   });
   resetInputs();
+
+  adjustBtnElements.forEach((button, index) => {
+    checkTextContrast(initialColors[index], button);
+    checkTextContrast(initialColors[index], lockBtnElements[index]);
+  });
 }
 
 function checkTextContrast(color, text) {
@@ -166,6 +176,18 @@ function closeAdjustmentPanel(index) {
   sliderContainers[index].classList.remove("active");
 }
 
+function lockLayer(e, index) {
+  const lockSVG = e.target.children[0];
+  const activeBg = colorDivs[index];
+  activeBg.classList.toggle("locked");
+
+  if (lockSVG.classList.contains("fa-lock-open")) {
+    e.target.innerHTML = '<i class="fas fa-lock"></i>';
+  } else {
+    e.target.innerHTML = '<i class="fas fa-lock-open"></i>';
+  }
+}
+
 randomColors();
 
 generateBtn.addEventListener("click", () => {
@@ -202,5 +224,11 @@ adjustBtnElements.forEach((btn, index) => {
 closeAdjustmentBtnElements.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     closeAdjustmentPanel(index);
+  });
+});
+
+lockBtnElements.forEach((button, index) => {
+  button.addEventListener("click", (e) => {
+    lockLayer(e, index);
   });
 });

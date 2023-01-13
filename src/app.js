@@ -219,7 +219,9 @@ function savePalette() {
   currentHexes.forEach((hex) => {
     colors.push(hex.textContent);
   });
+
   let paletteNumber = savedPalettes.length;
+
   const paletteObj = { name, colors, number: paletteNumber };
   savedPalettes.push(paletteObj);
 
@@ -250,6 +252,7 @@ function generatePalette(paletteObj) {
   paletteBtn.classList.add("pick-palette-btn");
   paletteBtn.classList.add(paletteObj.number);
   paletteBtn.textContent = "Select";
+
   generateSelectEventListener(paletteBtn);
 
   palette.appendChild(title);
@@ -292,7 +295,6 @@ function closeLibrary() {
 }
 
 function saveToLocal(paletteObj) {
-  let localPalettes;
   if (localStorage.getItem("palettes") === null) {
     localPalettes = [];
   } else {
@@ -303,7 +305,20 @@ function saveToLocal(paletteObj) {
   localStorage.setItem("palettes", JSON.stringify(localPalettes));
 }
 
+function getLocal() {
+  if (localStorage.getItem("palettes") === null) {
+    localPalettes = [];
+  } else {
+    localPalettes = JSON.parse(localStorage.getItem("palettes"));
+    localPalettes.forEach((paletteObj) => {
+      generatePalette(paletteObj);
+    });
+    savedPalettes.push(...localPalettes);
+  }
+}
+
 randomColors();
+getLocal();
 
 generateBtn.addEventListener("click", () => {
   randomColors();

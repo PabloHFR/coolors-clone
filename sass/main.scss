@@ -134,7 +134,9 @@ input[type="range"] {
   cursor: pointer;
 }
 
-.copy-container {
+.copy-container,
+.save-container,
+.library-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -148,7 +150,9 @@ input[type="range"] {
   opacity: 0;
   pointer-events: none;
 
-  .copy-popup {
+  .copy-popup,
+  .save-popup,
+  .library-popup {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -167,11 +171,51 @@ input[type="range"] {
   }
 }
 
-.copy-container.active {
-  opacity: 1;
-  pointer-events: all;
+.copy-container,
+.save-container,
+.library-container {
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
-.copy-popup.active {
-  transform: translateY(0);
+.copy-popup,
+.save-container,
+.library-container {
+  &.active {
+    transform: translateY(0);
+  }
+}
+
+.save-name {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+}
+
+.close-save {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: none;
+  background-color: #1f213f;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-save {
+  padding: 1rem 2rem;
+
+  border-radius: 1rem;
+  border: none;
+  background-color: #1f213f;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }

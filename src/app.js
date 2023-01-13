@@ -10,6 +10,11 @@ const lockBtnElements = document.querySelectorAll(".lock");
 const closeAdjustmentBtnElements =
   document.querySelectorAll(".close-adjustment");
 const sliderContainers = document.querySelectorAll(".sliders");
+const saveBtnElement = document.querySelector(".save");
+const submitSaveBtnElement = document.querySelector(".submit-save");
+const closeSaveBtnElement = document.querySelector(".close-save");
+const saveContainer = document.querySelector(".save-container");
+const saveInput = document.querySelector(".save-container input");
 
 let initialColors;
 
@@ -188,6 +193,18 @@ function lockLayer(e, index) {
   }
 }
 
+function openPalette(e) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.add("active");
+  popup.classList.add("active");
+}
+
+function closePalette(e) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.remove("active");
+  popup.classList.remove("active");
+}
+
 randomColors();
 
 generateBtn.addEventListener("click", () => {
@@ -232,3 +249,6 @@ lockBtnElements.forEach((button, index) => {
     lockLayer(e, index);
   });
 });
+
+saveBtnElement.addEventListener("click", openPalette);
+closeSaveBtnElement.addEventListener("click", closePalette);

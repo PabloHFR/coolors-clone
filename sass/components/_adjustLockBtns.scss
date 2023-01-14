@@ -1,0 +1,13 @@
+.adjust,
+.lock {
+  font-size: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 2rem 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}

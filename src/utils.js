@@ -1,5 +1,6 @@
 import * as chroma from "chroma-js";
 import { checkTextContrast } from "./checkTextContrast";
+import { initialColors } from "./generateColors";
 
 const colorDivs = document.querySelectorAll(".color");
 
@@ -29,8 +30,12 @@ export function resetInputs() {
 export function updateTextUI(index) {
   const activeDiv = colorDivs[index];
   const color = chroma(activeDiv.style.backgroundColor);
+  const icons = activeDiv.querySelectorAll(".controls button");
   const textHex = activeDiv.querySelector("h2");
   textHex.textContent = color.hex();
 
   checkTextContrast(color, textHex);
+  icons.forEach((icon) => {
+    checkTextContrast(color, icon);
+  });
 }

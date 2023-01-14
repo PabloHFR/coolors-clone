@@ -7,6 +7,8 @@ const colorDivs = document.querySelectorAll(".color");
 const adjustBtnElements = document.querySelectorAll(".adjust");
 const lockBtnElements = document.querySelectorAll(".lock");
 
+export let initialColors = [];
+
 // Hex Color Generator
 function generateHex() {
   const hexColor = chroma.random();

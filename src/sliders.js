@@ -1,4 +1,5 @@
 import * as chroma from "chroma-js";
+import { initialColors } from "./generateColors";
 
 const colorDivs = document.querySelectorAll(".color");
 const sliderContainers = document.querySelectorAll(".sliders");

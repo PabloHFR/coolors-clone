@@ -1,22 +1,22 @@
 {
-  "name": "coloors-clone",
+  "name": "coolors-clone",
   "version": "1.0.0",
-  "description": "A Coloors clone app project",
-  "main": "index.js",
+  "description": "A Coolors clone app project",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PabloHFR/coloors-clone.git"
+    "url": "git+https://github.com/PabloHFR/coolors-clone.git"
   },
   "author": "Pablo H. F. Roscoche",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PabloHFR/coloors-clone/issues"
+    "url": "https://github.com/PabloHFR/coolors-clone/issues"
   },
-  "homepage": "https://github.com/PabloHFR/coloors-clone#readme",
+  "homepage": "https://github.com/PabloHFR/coolors-clone#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
     "parcel": "^2.8.2",

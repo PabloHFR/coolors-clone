@@ -35,7 +35,7 @@ export function updateTextUI(index) {
   textHex.textContent = color.hex();
 
   checkTextContrast(color, textHex);
-  for (icon of icons) {
+  icons.forEach((icon) => {
     checkTextContrast(color, icon);
-  }
+  });
 }

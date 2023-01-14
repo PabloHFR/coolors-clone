@@ -4420,7 +4420,9 @@ function updateTextUI(index) {
     const textHex = activeDiv.querySelector("h2");
     textHex.textContent = color.hex();
     (0, _checkTextContrast.checkTextContrast)(color, textHex);
-    for (icon of icons)(0, _checkTextContrast.checkTextContrast)(color, icon);
+    icons.forEach((icon)=>{
+        (0, _checkTextContrast.checkTextContrast)(color, icon);
+    });
 }
 
 },{"chroma-js":"iVrwS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./checkTextContrast":"ihHqA","./generateColors":"elkIt"}],"1jdKO":[function(require,module,exports) {
@@ -4474,6 +4476,7 @@ const libraryContainer = document.querySelector(".library-container");
 const saveContainer = document.querySelector(".save-container");
 const saveInput = document.querySelector(".save-container input");
 let initialColors;
+let localPalettes = [];
 let savedPalettes = [];
 function openSavePalette() {
     const popup = saveContainer.children[0];

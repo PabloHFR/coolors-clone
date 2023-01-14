@@ -9,6 +9,7 @@ const saveContainer = document.querySelector(".save-container");
 const saveInput = document.querySelector(".save-container input");
 
 let initialColors;
+let localPalettes = [];
 let savedPalettes = [];
 
 export function openSavePalette() {

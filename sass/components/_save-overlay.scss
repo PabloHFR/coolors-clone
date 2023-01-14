@@ -1,0 +1,43 @@
+@import "../abstracts/mixins";
+
+.save-container {
+  @extend %overlay-container;
+
+  .save-popup {
+    @extend %overlay-container-popup;
+  }
+}
+
+.save-container {
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.save-popup {
+  &.active {
+    transform: translateY(0);
+  }
+}
+
+.save-name {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+}
+
+.submit-save {
+  padding: 1rem 2rem;
+
+  border-radius: 1rem;
+  border: none;
+  background-color: $color-dark-blue;
+  color: $color-white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.close-save {
+  @extend %overlay-container-close-btns;
+}

@@ -4,9 +4,9 @@
 
 ![imagem_2023-01-15_151554833](https://user-images.githubusercontent.com/97895946/212559384-d103b5fd-c28f-4714-afb8-fc7ef9b0225f.png)
 
-O [Coolors Clone](coolorsclone.netlify.app) é um clone do site [Coolors](https://coolors.co), feito com o intuito de reproduzir a essência do site em JavaScript puro. Esta aplicação permite ao usuário gerar uma paleta de cinco cores aleatórias ao clicar no botão _Generate_.
+O [Coolors Clone](https://coolorsclone.netlify.app) é um clone do site [Coolors](https://coolors.co), feito com o intuito de reproduzir a essência do site em JavaScript puro. Esta aplicação permite ao usuário gerar uma paleta de cinco cores aleatórias ao clicar no botão _Generate_.
 
-Você pode acessar o projeto no site [Coolors Clone](coolorsclone.netlify.app).
+Você pode acessar o projeto no site [Coolors Clone](https://coolorsclone.netlify.app).
 
 ## Features
 
